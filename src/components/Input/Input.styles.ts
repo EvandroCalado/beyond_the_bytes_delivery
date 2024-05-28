@@ -12,6 +12,7 @@ export const Label = styled.label`
   ${({ theme }) => css`
     font-size: ${theme.font.sizes.sm};
     text-transform: capitalize;
+    font-weight: 600;
   `}
 `;
 

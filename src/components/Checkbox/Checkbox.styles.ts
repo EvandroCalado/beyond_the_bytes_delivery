@@ -15,6 +15,7 @@ export const Label = styled.label`
     text-transform: capitalize;
     font-size: ${theme.font.sizes.sm};
     padding: ${theme.spacings.xs} ${theme.spacings.sm};
+    font-weight: 600;
     border-radius: 0.5rem;
     cursor: pointer;
 
