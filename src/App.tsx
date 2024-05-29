@@ -1,29 +1,44 @@
-import { EditAddress, Home, RegisterAddress } from 'pages';
-import { RouterProvider, createBrowserRouter } from 'react-router-dom';
+import { useState } from 'react';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
-const router = createBrowserRouter([
-  {
-    path: '/',
-    element: <Home />,
-    children: [
-      {
-        index: true,
-        element: <div>Home</div>,
-      },
-      {
-        path: 'register-address',
-        element: <RegisterAddress />,
-      },
-      {
-        path: 'edit-address',
-        element: <EditAddress />,
-      },
-    ],
-  },
-]);
+import { AddressList, EditAddress, RegisterAddress } from 'components';
+
+interface Address {
+  lot: string;
+  details: string;
+}
 
 const App = () => {
-  return <RouterProvider router={router} />;
+  const [addresses, setAddresses] = useState<Address[]>([]);
+
+  const addAddress = (address: Address) => {
+    setAddresses([...addresses, address]);
+  };
+
+  const updateAddress = (index: number, updatedAddress: Address) => {
+    const newAddresses = addresses.map((addr, i) =>
+      i === index ? updatedAddress : addr,
+    );
+    setAddresses(newAddresses);
+  };
+
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<AddressList addresses={addresses} />} />
+        <Route
+          path="/register-address"
+          element={<RegisterAddress addAddress={addAddress} />}
+        />
+        <Route
+          path="/edit-address/:id"
+          element={
+            <EditAddress addresses={addresses} updateAddress={updateAddress} />
+          }
+        />
+      </Routes>
+    </BrowserRouter>
+  );
 };
 
 export default App;
