@@ -21,7 +21,7 @@ export const AddressList: FC<AddressListProps> = ({ addresses }) => {
   return (
     <S.Container>
       <S.Addresses>
-        <Heading as={'h1'} size="xl" fontWeight="800">
+        <Heading as={'h1'} size="xl" fontWeight="600">
           lista de endereços
         </Heading>
 

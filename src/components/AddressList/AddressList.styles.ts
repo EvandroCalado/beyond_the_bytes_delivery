@@ -15,9 +15,17 @@ export const Addresses = styled.div`
     justify-content: center;
     gap: ${theme.spacings.lg};
     padding: 0 ${theme.spacings.md};
-    padding: ${theme.spacings.md};
+    padding: ${theme.spacings.lg} ${theme.spacings.md};
     border: 1px solid ${theme.colors.gray};
     border-radius: ${theme.spacings.sm};
+
+    @media ${theme.media.lteOrEqSmall} {
+      width: 32rem;
+    }
+
+    @media ${theme.media.lteOrEqSmallest} {
+      width: 28rem;
+    }
 
     & > h1 {
       text-transform: capitalize;
@@ -39,6 +47,10 @@ export const Addresses = styled.div`
       gap: ${theme.font.sizes.xs};
       padding: ${theme.spacings.md};
       border-radius: ${theme.spacings.xs};
+
+      @media ${theme.media.lteOrEqSmallest} {
+        font-size: ${theme.font.sizes.sm};
+      }
 
       & > .address {
         display: flex;
