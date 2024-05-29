@@ -1,4 +1,4 @@
-import { createGlobalStyle } from "styled-components";
+import { createGlobalStyle } from 'styled-components';
 
 export const GlobalStyles = createGlobalStyle`
   * {
@@ -12,6 +12,7 @@ export const GlobalStyles = createGlobalStyle`
     scroll-behavior: smooth;
     font-family: "Lato", sans-serif;
     color: ${({ theme }) => theme.colors.primary};
+    background-color: ${({ theme }) => theme.colors.background};
   }
 
   body {
