@@ -30,7 +30,18 @@ export const AddressForm: FC<AddressFormProps> = ({
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
+
+    if (name === 'lot' && value.length <= 4) {
+      const numericValue = value.replace(/\D/g, '');
+      setFormData({ ...formData, [name]: numericValue });
+      return;
+    }
+
+    if (name === 'details' && value.length <= 20) {
+      const alphaValue = value.replace(/[^a-zA-Z]/g, '');
+      setFormData({ ...formData, [name]: alphaValue });
+      return;
+    }
   };
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
@@ -42,31 +53,42 @@ export const AddressForm: FC<AddressFormProps> = ({
 
   return (
     <S.Container>
-      <Button variant="secondary" onClick={() => navigate(-1)}>
-        <ChevronLeft size={16} />
-      </Button>
+      <S.Addresses>
+        <Button variant="secondary" onClick={() => navigate(-1)}>
+          <ChevronLeft size={16} />
+        </Button>
 
-      <Heading as="h2" size="3xl" fontWeight="800">
-        {title}
-      </Heading>
+        <Heading as="h2" size="2xl" fontWeight="600">
+          {title}
+        </Heading>
 
-      <form onSubmit={handleSubmit}>
-        <Input
-          label="lote"
-          name="lot"
-          type="text"
-          value={formData.lot}
-          onChange={handleChange}
-        />
-        <Input
-          label="detalhes"
-          name="details"
-          type="text"
-          value={formData.details}
-          onChange={handleChange}
-        />
-        <Button type="submit">salvar</Button>
-      </form>
+        <form onSubmit={handleSubmit}>
+          <Input
+            label="lote"
+            name="lot"
+            type="text"
+            placeholder="Digite apenas números"
+            maxLength={4}
+            minLength={4}
+            required
+            value={formData.lot}
+            onChange={handleChange}
+          />
+
+          <Input
+            label="detalhes"
+            name="details"
+            type="text"
+            placeholder="Digite apenas letras"
+            maxLength={20}
+            minLength={4}
+            required
+            value={formData.details}
+            onChange={handleChange}
+          />
+          <Button type="submit">salvar</Button>
+        </form>
+      </S.Addresses>
     </S.Container>
   );
 };
