@@ -8,8 +8,19 @@ interface Address {
   details: string;
 }
 
+const initialAddresses: Address[] = [
+  {
+    lot: '4251',
+    details: 'monitor',
+  },
+  {
+    lot: '3952',
+    details: 'teclado',
+  },
+];
+
 const App = () => {
-  const [addresses, setAddresses] = useState<Address[]>([]);
+  const [addresses, setAddresses] = useState<Address[]>(initialAddresses);
 
   const addAddress = (address: Address) => {
     setAddresses([...addresses, address]);
