@@ -22,7 +22,7 @@ export const AddressList: FC<AddressListProps> = ({ addresses }) => {
     <S.Container>
       <S.Addresses>
         <Heading as={'h1'} size="xl" fontWeight="600">
-          lista de endereços
+          lista de entregas
         </Heading>
 
         {addresses.length === 0 && <span>não há endereços</span>}
@@ -43,7 +43,7 @@ export const AddressList: FC<AddressListProps> = ({ addresses }) => {
         </ul>
 
         <Button onClick={() => navigate('/register-address')}>
-          novo endereço
+          nova entrega
         </Button>
       </S.Addresses>
     </S.Container>
