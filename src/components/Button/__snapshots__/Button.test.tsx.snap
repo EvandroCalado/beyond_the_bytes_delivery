@@ -31,10 +31,12 @@ exports[`Button should render a snapshot 1`] = `
   pointer-events: none;
 }
 
-<button
-  class="c0"
-  variant="secondary"
->
-  button
-</button>
+<div>
+  <button
+    class="c0"
+    variant="secondary"
+  >
+    button
+  </button>
+</div>
 `;

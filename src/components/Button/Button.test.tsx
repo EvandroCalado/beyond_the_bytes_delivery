@@ -30,10 +30,8 @@ describe('Button', () => {
   });
 
   it('should render a snapshot', () => {
-    render(<Button variant="secondary">button</Button>);
+    const { container } = render(<Button variant="secondary">button</Button>);
 
-    const button = screen.getByRole('button');
-
-    expect(button).toMatchSnapshot();
+    expect(container).toMatchSnapshot();
   });
 });
